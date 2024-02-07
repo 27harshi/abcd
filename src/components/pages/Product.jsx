@@ -15,14 +15,14 @@ function Product() {
   const [items, setItems] = useState([]);
   useEffect(() => {
     getData()
-  }, [])
+  }, []);
 
   async function getData() {
     const data = await fetch("https://fakestoreapi.com/products")
     const json = await data.json()
     const details = json.map((obj) => ({ ...obj, quantity: 1 }));
 
-    setItems(details)
+    setItems(details);
   }
   return items.length == 0 ? <Shimmer /> : (
     <Layout>
@@ -44,7 +44,7 @@ function Product() {
             <p className='font-semibold '>{list.title}</p>
             <h1 className='font-semibold'>{"$" + list.price}</h1>
             <div className='flex justify-center gap-5 '>
-              <button className=' w-28 h-10 border border-gray-600 flex justify-center font-medium items-center capitalize  hover:bg-gray-300' onClick={HandleAdd}><IoCartOutline />add to cart</button>
+              <button className=' w-28 h-10 border border-gray-600 flex justify-center font-medium items-center capitalize  hover:bg-gray-300' onClick={() => HandleAdd(list)}><IoCartOutline />add to cart</button>
               <Link to={"/product/"+list.id}>
               
               <button className=' w-24 h-10 border border-gray-600 flex justify-center font-medium items-center hover:bg-gray-300 ' > < IoEyeSharp />View</button>

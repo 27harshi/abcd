@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { GrFormAdd, GrFormSubtract } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, decreaseQuantity, removeItem } from "../../utils/cartSlice";
-import Layout from "../Layout/Layout";
+import Navbar from "../Layout/Navbar";
 
 
 const CartPage = () => {
@@ -20,9 +20,9 @@ const CartPage = () => {
     dispatch(decreaseQuantity(items));
   }
   return (
-    <Layout>
-
+    
     <div className="mt-[100px] flex justify-center">
+<Navbar/>
       <div
         className="w-96  border rounded-xl   flex justify-center 
                       flex-col items-center py-3 gap-5"
@@ -38,7 +38,7 @@ const CartPage = () => {
               </div>
               <div className="text-center">
                 <div className="relative bottom-6">
-                  <p className="font-semibold text-[10px] mt-2 w-48 pt-2">
+                  <p className=" text-xs font-bold h-[100px]  text-gray-800">
                     {cart.title}
                   </p>
                   <p className="font-semibold text-xs pt-1">
@@ -76,7 +76,7 @@ const CartPage = () => {
         <Total />
       </div>{" "}
     </div>
-              </Layout>
+             
   );
 };
 
